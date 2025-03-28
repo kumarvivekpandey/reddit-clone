@@ -91,12 +91,14 @@ pipeline {
          }
     }
 	post {
+		always{
    emailext attachLog: true,
 	    subject: "'${currentBuild.result}'"
 		body: "Project: ${env.JOB_Name}<br> "+
 			"URL: ${env.BUILD_URL}<br/>",
 	to: 'vkpvivek1998@gmail.com',
 			attachmentsPattern: 'trivyfs.txt,trivyimage.txt'
+	}
 	}
 	
 }
